@@ -1,8 +1,6 @@
-# Seminar: Advanced Topics in Quantum
-Computing
+# Seminar: Advanced Topics in Quantum Computing
 
-## Quantum Optimization - Quantum Relax-and-Round
-(QRR)
+## Quantum Optimization - Quantum Relax-and-Round (QRR)
 
 Eraraya Ricardo Muten<br>
 Technical University of Munich, Quantum Science & Technology<br>
