@@ -1,3 +1,4 @@
+# Constructing the Z matrix from bitstring samples of an optimized QAOA circuit
 def Z_matrix_from_bitstrings(bitstrings):
 
     num_nodes = bitstrings.shape[1]
@@ -12,6 +13,7 @@ def Z_matrix_from_bitstrings(bitstrings):
 
     return Z
 
+# Finding the best eigenvector
 def find_best_eigenvector(eigenvectors, obj_function, args):
 
     num_eigenvectors = eigenvectors.shape[1]
@@ -26,9 +28,11 @@ def find_best_eigenvector(eigenvectors, obj_function, args):
 
     return np.sign(eigenvectors[:,best_id]), cost, best_id
 
+# The QRR algorithm
 def relax_and_round(Z, obj_function, args):
 
-    eigenvalues, eigenvectors = np.linalg.eig(Z)
-    best_solution, min_cost, best_id = find_best_eigenvector(eigenvectors, obj_function, args)
+    eigenvalues, eigenvectors = np.linalg.eig(Z) # step 3 of finding eigenvectors
+    eigenvectors = np.concatenate((np.sign(eigenvectors), np.sign(eigenvectors)*-1), axis=1) # step 4 of sign-rounding
+    best_solution, min_cost, best_id = find_best_eigenvector(eigenvectors, obj_function, args) # step 5 of finding the best eigenvector
 
     return best_solution, min_cost
